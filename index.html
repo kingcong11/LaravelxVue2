@@ -9,7 +9,12 @@
 
 
     <div id="root">
-        <p>{{ name }}</p>
+
+        <li v-for="name in names" v-text="name"></li>
+
+        <input type="text" name="" v-model="newName">
+        <button @click="submitName" >Add Name</button>
+
     </div>
 
 
@@ -26,7 +31,19 @@
             el: '#root',
 
             data: {
-                name: "Nico"
+                newName: '',
+                names: ["Nico", "Christopher"]
+            },
+
+            methods: {
+                submitName(){
+
+                    this.names.push(this.newName);
+                    
+                    // clear input
+                    this.newName = '';
+
+                }
             }
 
         });
