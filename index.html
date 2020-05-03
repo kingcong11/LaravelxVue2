@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+
+        .color-red{ color:red }
+        .color-blue{ color:blue }
+        .is-loading{ background-color:violet }
+
+    </style>
 </head>
 <body>
 
 
     <div id="root">
-        <p>{{ name }}</p>
+        <button :class="{ 'is-loading' : isSubmitted }" @click="validateRequest">{{ buttonMessage }}</button>
     </div>
 
 
@@ -26,7 +34,21 @@
             el: '#root',
 
             data: {
-                name: "Nico"
+                name: "Nico",
+                isSubmitted: false,
+                buttonMessage: 'Submit'
+            },
+
+            methods: {
+                validateRequest(){
+
+                    // sample validation
+                    if(true){
+                        this.isSubmitted = true;
+                        this.buttonMessage = "Validating..."
+                    }
+
+                }
             }
 
         });
