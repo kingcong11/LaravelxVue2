@@ -1,11 +1,26 @@
-Vue.component('task', {
+Vue.component('message', {
 
-    template: '<li><slot></slot></li>',
+    props: ["title", "body"],
+
+    template: `
+    
+    <article class="message" v-show="isVisible">
+        <div class="message-header">
+            <p>{{ title }}</p>
+            <button class="delete" aria-label="delete" @click="isVisible = false;"></button>
+        </div>
+
+        <div class="message-body">
+            {{ body }}
+        </div>
+    </article>
+    
+    `,
 
 
     data() {
         return {
-            message: "sample message from component"
+            isVisible : true
         };
     }
 
