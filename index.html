@@ -8,8 +8,22 @@
 <body>
 
 
-    <div id="root">
-        <p>{{ name }}</p>
+    <div id="root"> 
+
+        <h1>All Tasks</h1>
+        <ul>
+            <li v-for="task in tasks" v-text="task.description"></li>
+        </ul>
+
+        <h1>Uncompleted Tasks</h1>
+        <ul>
+            <li v-for="task in UncompletedTasks"><input type="checkbox" @click="completeTask(task)"><label v-text="task.description"></label></li>
+        </ul>
+
+        <h1>Completed Tasks</h1>
+        <ul>
+            <li v-for="task in CompletedTasks" v-text="task.description"></li>
+        </ul>
     </div>
 
 
@@ -26,7 +40,37 @@
             el: '#root',
 
             data: {
-                name: "Nico"
+                tasks: [
+                    {id: 1, description: "Daily lesson", completed: false},
+                    {id: 2, description: "Do the dishes", completed: false},
+                    {id: 3, description: "Do the cleaning", completed: false},
+                    {id: 4, description: "Feed the dog", completed: false},
+                    {id: 5, description: "Social media", completed: false},
+                    {id: 6, description: "Talk to bby", completed: false},
+                ]
+            },
+
+            computed: {
+                UncompletedTasks(){
+                    return this.tasks.filter(task => !task.completed);
+
+                    // long format of the shorthand method above
+                    // return this.task.filter(function(task){
+                    //     !task.completed;
+                    // });
+                },
+
+                CompletedTasks(){
+                    return this.tasks.filter(task => task.completed);
+                }
+            },
+
+
+            methods: {
+                completeTask(e){
+                    console.log(e);
+                    e.completed = !e.completed;                    
+                }
             }
 
         });
