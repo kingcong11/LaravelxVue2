@@ -9,8 +9,18 @@
 <body>
 
 
-    <div id="root">
-        <p>{{ message }}</p>
+    <div id="root" class="container">
+
+        <progress-view inline-template>
+
+            <div>
+                <h1>Your Progress is at {{ progressionRate }}%</h1>
+    
+                <button @click="progressionRate+= 2"> Click </button>
+            </div>
+
+        </progress-view>
+    
     </div>
 
 
