@@ -10,7 +10,25 @@
 
 
     <div id="root">
-        <p>{{ message }}</p>
+
+        <tabs>
+            <tab name="About Us" :selected="true">
+                <h1>Content of About Us</h1>
+            </tab>
+
+            <tab name="Contact Us">
+                <h1>Content of Contact Us</h1>
+            </tab>
+
+            <tab name="About our Vision">
+                <h1>Content of About our vision</h1>
+            </tab>
+
+            <tab name="About our Other Things">
+                <h1>Content of About our Other Things</h1>
+            </tab>
+        </tabs>
+        
     </div>
 
 
