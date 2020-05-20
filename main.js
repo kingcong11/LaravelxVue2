@@ -1,3 +1,5 @@
+window.Event = new Vue();
+
 Vue.component('coupon', {
     template: `
         <input type="text" placeholder="Enter Coupon Code" @blur="onCouponApplied"></input>
@@ -5,7 +7,7 @@ Vue.component('coupon', {
 
     methods: {
         onCouponApplied(){
-            this.$emit('applied');
+            Event.$emit('applied');
         }
     }
 });
@@ -13,16 +15,19 @@ Vue.component('coupon', {
 new Vue({
 
     el: "#root",
+
     data:{
         message: "sample message",
         couponApplied : false
     },
 
-    methods: {
-        onCouponApplied(){
-            // alert(`Coupon Applied!! Balagaboom`);
+    created(){
+        Event.$on('applied', () => {
+
+            alert(`Global Event triggered, handling it`);
             this.couponApplied = true;
-        }
-    },
+
+        });
+    }
 
 });
